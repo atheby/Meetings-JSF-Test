@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+    <class name="main.java.com.atheby.meetings.Meeting" table="meeting" catalog="meetings">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="withId" type="int">
+            <column name="WITH_ID" length="11" not-null="true" />
+        </property>
+        <property name="whoId" type="int">
+            <column name="WHO_ID" length="11" not-null="true" />
+        </property>
+        <property name="status" type="string">
+           <column name="STATUS" length="10" not-null="true" />
+        </property>
+        <property name="date" type="date">
+            <column name="DATE" not-null="true" />
+        </property>
+        <property name="start" type="int">
+            <column name="START" length="2" not-null="true" />
+        </property>
+        <property name="end" type="int">
+            <column name="END" length="2" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

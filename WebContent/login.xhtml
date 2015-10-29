@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+>
+    <h:body>
+    	<ui:composition template="/resources/template/template.xhtml">
+    		<ui:define name="content">
+    			<h:panelGroup layout="block" class="bgdiv" style="width:330px; padding:0px;margin: 0 auto;">
+    				<h:panelGroup layout="block" class="lab_titel" style="box-shadow:none;">Login</h:panelGroup>
+    				<p:messages id="login-messages" autoUpdate="true" style="margin: 30px 0;" />	
+    				<h:form id="login-form">
+    					<h:outputText value="Username" style="padding-right:10px; font-weight: bold;"/>
+    					<p:inputText value="#{loginBean.username}" id="username" style="width:140px;" required="true"/>
+    					<br/><br/>
+    					<h:outputText value="Password" style="padding-right:10px; font-weight: bold;"/>
+    					<p:password value="#{loginBean.password}" id="password" style="width:140px; margin-bottom:10px;" required="true" />
+    					<br/>
+    					<p:link value="Register" outcome="register.xhtml" style="float:right; margin-right:10px; font-size: 13px;"/>
+    					<br/>
+    					<p:commandButton id="button" value="Login" action="#{loginBean.login}" icon="ui-icon-key" style="margin: 10px auto;"/>
+    					<br/>
+    				</h:form>
+    			</h:panelGroup>
+    		</ui:define>
+    	</ui:composition>
+    </h:body>
+</html>

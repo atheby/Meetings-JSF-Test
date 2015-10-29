@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+>
+    <h:body>
+    	<ui:composition template="/resources/template/template.xhtml">
+    		<ui:define name="content">
+    			<h:panelGroup layout="block" class="bgdiv" style="width:500px; margin: 0 auto;">
+    				<h:panelGroup layout="block" class="lab_titel" style="box-shadow:none;">Create new account</h:panelGroup>
+    				<p:messages id="register-messages" autoUpdate="true" style="margin: 30px 0;" />  					
+    				<h:form id="register">
+    					<h:inputHidden value="true">
+    						<f:validator validatorId="registerValidator" />
+    					</h:inputHidden>
+    					<p:panelGrid style="width:370px; margin: 0 auto;">
+    						<p:row>
+    							<p:column style="border:none; text-align:left;">
+    								<p:outputLabel value="Username" style="font-weight: bold;"/>
+    							</p:column>
+    							<p:column style="border:none; text-align:left;">
+    								<p:outputLabel value="E-mail" style="font-weight: bold;"/>
+   								</p:column>
+   							</p:row>
+   							<p:row>
+   							<p:column style="border:none; text-align:left;">
+    								<p:inputText value="#{registerBean.user.username}" id="username" style="width:120px;" />
+    							</p:column>						
+    							<p:column style="border:none; text-align:left;">
+    								<p:inputText value="#{registerBean.user.email}" id="email" style="width:160px;">
+    									<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+    								</p:inputText>
+   								</p:column>								
+   							</p:row>
+   							<p:row>
+   								<p:column style="border:none; text-align:left;">
+   									<p:outputLabel value="Password" style="font-weight: bold;"/>
+   								</p:column>
+   							</p:row>
+    						<p:row>
+    							<p:column style="border:none; text-align:left;">
+    								<p:password value="#{registerBean.user.password}" id="password" style="width:120px;" feedback="true" />
+    							</p:column>
+    						</p:row>
+    						<p:row>
+    							<p:column style="border:none; text-align:left;">
+    								<p:outputLabel value="Confirm password" style="font-weight: bold;"/>
+    							</p:column>
+    						</p:row>
+   							<p:row>
+   								<p:column style="border:none; text-align:left;">
+   									<p:password value="#{registerBean.user.password}" id="repass" style="width:120px;" feedback="true" />
+    							</p:column>
+    						</p:row>
+    					</p:panelGrid>
+    					<p:commandButton id="button" value="Register" action="#{registerBean.register}" icon="ui-icon-person" style="margin: 20px auto;"/>
+    				</h:form>
+   				</h:panelGroup>
+    		</ui:define>
+    	</ui:composition>
+    </h:body>
+</html>

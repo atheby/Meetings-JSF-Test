@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+>
+    <h:body>
+    	<ui:composition template="account.xhtml">
+    		<ui:define name="account">
+    			<h:panelGroup layout="block" class="bgdiv" style="width:500px; margin: 0 auto;">
+    				<h:panelGroup layout="block" class="lab_titel" style="box-shadow:none;">Arrange new meeting</h:panelGroup>
+    				<p:messages id="meeting-add-messages" autoUpdate="true" style="margin: 30px 0;" />  					
+    				<h:form id="meeting-add-form">
+    					<h:inputHidden value="true">
+    					 	<f:validator validatorId="meetingAddValidator" />
+    					</h:inputHidden>
+    					<p:panelGrid style="width:370px; margin: 0 auto;">
+    						<p:row>
+    							<p:column colspan="2" style="border:none; text-align:left;">
+    								<p:outputLabel value="With: " style="font-weight: bold;"/>
+    								<p:selectOneMenu id="withId" value="#{meetingAddBean.meeting.withId}" style="width:165px;" effect="blind">
+           								<f:selectItems value="#{meetingAddManager.usersList}" var="user" itemValue="#{user.id}" itemLabel="#{user.username}" />
+        							</p:selectOneMenu>
+    							</p:column>
+   							</p:row>
+   							<p:row>
+   								<p:column colspan="2" style="border:none;">				
+									<p:separator />
+								</p:column>
+   							</p:row>
+   							<p:row>
+   								<p:column style="border:none; width:40px;">				
+								</p:column>				
+    							<p:column  style="border:none;">
+    								<p:calendar id="date" value="#{meetingAddBean.meeting.date}" mode="inline" mindate="#{meetingAddBean.meeting.date}" pattern="yyyy-MM-dd" style="margin:0 auto; text-align:center;"/>
+   								</p:column>								
+   							</p:row>
+   							<p:row>
+   								<p:column colspan="2" style="border:none; height:40px;">
+   									<h:outputText id="displayRange" value="Time between #{meetingAddBean.meeting.start}:00 and #{meetingAddBean.meeting.end}:00" style="font-weight: bold;" />
+   								</p:column>
+   							</p:row>
+   							<p:row>
+   								<p:column colspan="2" style="border:none;">
+   									<p:slider for="start, end" step="1" minValue="9" maxValue="17" display="displayRange" range="true" displayTemplate="Time between {min}:00 and {max}:00" style="width: 360px;" >
+										<h:inputHidden id="start" value="#{meetingAddBean.meeting.start}"  />
+   										<h:inputHidden id="end" value="#{meetingAddBean.meeting.end}" />
+   									</p:slider>
+   								</p:column>
+   							</p:row>
+    					</p:panelGrid>
+    					<p:commandButton id="button" value="Send" action="#{meetingAddBean.addMeeting}" icon="ui-icon-person" style="margin: 20px auto;"/>
+    				</h:form>
+   				</h:panelGroup>    		
+    		</ui:define>
+    	</ui:composition>
+    </h:body>
+</html>
